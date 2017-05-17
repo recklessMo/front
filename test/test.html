@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>列表</title>
+  <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.0/style/weui.min.css">
+</head>
+<body>
+<div id="score">
+  <router-view></router-view>
+</div>
+
+<template id="examList">
+  <div>
+    <ul>
+      <li><router-link to="/">第一次</router-link></li>
+      <li><router-link to="/b">第二次</router-link></li>
+    </ul>
+  </div>
+</template>
+
+<template id="examList1">
+  <div>
+    <ul>
+      <li>第1笔</li>
+      <li>第2笔</li>
+      <li>第3笔</li>
+      <li>第4笔</li>
+    </ul>
+  </div>
+</template>
+
+<template id="xfooter">
+  <div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+      <a href="javascript:home();" class="weui-footer__link">了解我们</a>
+    </p>
+    <p class="weui-footer__text">Copyright © 2016-2017</p>
+  </div>
+</template>
+
+</body>
+
+
+<script src="//cdn.bootcss.com/vue/2.2.4/vue.min.js"></script>
+<script src="//cdn.bootcss.com/vue-router/2.3.0/vue-router.min.js"></script>
+
+<script type="text/javascript">
+
+  //构造组件
+  var examList = Vue.extend({
+    template: '#examList'
+  });
+  var examList1 = Vue.extend({
+    template: '#examList1'
+  });
+
+  const routes = [
+    {path: '/', component: examList},
+    {path: '/b', component: examList1}
+  ]
+
+  const router = new VueRouter({routes: routes});
+
+  new Vue({
+    el: '#score',
+    router: router
+  });
+
+</script>
+</html>

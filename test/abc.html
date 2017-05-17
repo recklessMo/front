@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>列表</title>
+  <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.0/style/weui.min.css">
+</head>
+<body>
+<div id="app">
+  <div class="content">
+    <ul>
+      <li><router-link to="/goods">商品</router-link></li>
+      <li><router-link to="/ratings">评论</router-link></li>
+      <li><router-link to="/seller">商家</router-link></li>
+    </ul>
+  </div>
+  <router-view></router-view>
+</div>
+
+<template id="examList">
+  <div>
+    <ul>
+      <li>第一笔</li>
+      <li>第二笔</li>
+      <li>第三笔</li>
+      <li>第四笔</li>
+    </ul>
+  </div>
+</template>
+
+<template id="examList1">
+  <div>
+    <ul>
+      <li>第1笔</li>
+      <li>第2笔</li>
+      <li>第3笔</li>
+      <li>第4笔</li>
+    </ul>
+  </div>
+</template>
+
+</body>
+
+
+<script src="//cdn.bootcss.com/vue/2.2.4/vue.min.js"></script>
+<script src="//cdn.bootcss.com/vue-router/2.3.0/vue-router.min.js"></script>
+
+<script type="text/javascript">
+
+  // 首先定义或者引入路由的组件
+  // 方法一：直接定义路由组件
+  const goods = { template: '#examList' };
+  const ratings = { template: '#examList1' };
+  const seller = { template: '<p>seller</p>' };
+
+  // 然后定义路由(routes)，components还可以是Vue.extend()创建的
+  const routes = [
+    { path: '/goods', component: goods },
+    { path: '/ratings', component: ratings },
+    { path: '/seller', component: Agree }
+  ];
+  // 接着创建路由实例
+  const router = new VueRouter({
+    // ES6缩写语法，相当于routes:routes
+    routes
+  });
+  // 最后创建vue实例并挂载
+  const app = new Vue({
+    el: '#app',
+    router
+  });
+</script>
+</html>
