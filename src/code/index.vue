@@ -105,7 +105,7 @@
         }, {
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '作业查询',
-          url: '/worklist'
+          url: '/assignmentList'
         }
         ],
         index: {}
@@ -117,7 +117,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.102:8080/public/wechat/index'
+          url: 'http://192.168.1.103:8080/public/wechat/index'
         }).then(function (response) {
           console.log(response)
           this.show = false

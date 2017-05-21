@@ -1,7 +1,7 @@
 <template>
   <div>
     <group :title="'考试列表'">
-      <cell v-for="exam in exams" :key="exam.examId" :link="{name: 'category', params: {id: exam.examId}}" :title="exam.examName" :inline-desc="exam.examTime"></cell>
+      <cell v-for="exam in exams" :key="exam.examId" :link="{name: 'score', params: {id: exam.examId}}" :title="exam.examName" :inline-desc="exam.examTime | dateStr"></cell>
     </group>
 
     <div v-transfer-dom>
@@ -34,7 +34,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.102:8080/public/wechat/examList'
+          url: 'http://192.168.1.103:8080/public/wechat/examList'
         }).then(function (response) {
           console.log(response)
           this.show = false

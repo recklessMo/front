@@ -7,9 +7,9 @@ import VueResource from 'vue-resource'
 import App from './App'
 import Index from './code/index.vue'
 import ExamList from './code/examList.vue'
+import AssignmentList from './code/assignmentList.vue'
+import Assignment from './code/assignment.vue'
 import Info from './code/info.vue'
-import Category from './code/category.vue'
-import ScoreTotal from './code/scoreTotal.vue'
 import Score from './code/score.vue'
 
 Vue.use(VueRouter)
@@ -26,13 +26,13 @@ const routes = [
     path: '/examlist', component: ExamList
   },
   {
-    path: '/category/:id', name: 'category', component: Category
+    path: '/score/:id', name: 'score', component: Score
   },
   {
-    path: '/result/my/:id', name: 'score', component: Score
+    path: '/assignmentList', component: AssignmentList
   },
   {
-    path: '/result/total/:id', name: 'total', component: ScoreTotal
+    path: '/assignment/:id', name: 'assignment', component: Assignment
   }
 ]
 
@@ -46,6 +46,17 @@ Vue.config.productionTip = false
 
 Vue.filter('number', function (value) {
   return value.toFixed(2)
+})
+
+Vue.filter('dateStr', function (value) {
+  if (!value) {
+    return ''
+  }
+  var date = new Date(value)
+  var Y = date.getFullYear() + '年'
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '月'
+  var D = date.getDate() + '日 '
+  return Y + M + D
 })
 
 /* eslint-disable no-new */

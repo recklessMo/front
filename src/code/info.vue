@@ -3,7 +3,7 @@
     <group title="个人信息">
       <cell title="姓名" :value="info.name"></cell>
       <cell title="性别" :value="info.sex == 0 ? '男':'女'"></cell>
-      <cell title="出生日期" :value="info.birth"></cell>
+      <cell title="出生日期" :value="info.birth | dateStr"></cell>
       <cell title="手机号" :value="info.phone"></cell>
       <cell title="民族" :value="info.people"></cell>
       <cell title="户口" :value="info.homeTown"></cell>
@@ -50,7 +50,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.102:8080/public/wechat/info'
+          url: 'http://192.168.1.103:8080/public/wechat/info'
         }).then(function (response) {
           console.log(response)
           this.show = false
