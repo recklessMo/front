@@ -2,7 +2,7 @@
   <div>
     <group :title="'作业列表'">
       <cell v-for="assignment in assignments" :key="assignment.id" :link="{name: 'assignment', params: {id: assignment.id}}" :title="assignment.name" :inline-desc="assignment.courseName">
-        <div>{{assignment.submit}}</div>
+        <div>{{assignment.submit | dateStr}}</div>
       </cell>
     </group>
 
@@ -36,7 +36,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.103:8080/public/wechat/assignmentList'
+          url: '/public/wechat/assignmentList'
         }).then(function (response) {
           console.log(response)
           this.show = false

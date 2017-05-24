@@ -34,7 +34,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.103:8080/public/wechat/examList'
+          url: '/public/wechat/examList'
         }).then(function (response) {
           console.log(response)
           this.show = false

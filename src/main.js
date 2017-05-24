@@ -9,6 +9,8 @@ import Index from './code/index.vue'
 import ExamList from './code/examList.vue'
 import AssignmentList from './code/assignmentList.vue'
 import Assignment from './code/assignment.vue'
+import InformMessageList from './code/informMessageList.vue'
+import InformMessage from './code/informMessage.vue'
 import Info from './code/info.vue'
 import Score from './code/score.vue'
 
@@ -33,6 +35,12 @@ const routes = [
   },
   {
     path: '/assignment/:id', name: 'assignment', component: Assignment
+  },
+  {
+    path: '/informMessageList', component: InformMessageList
+  },
+  {
+    path: '/informMessage/:id', name: 'InformMessage', component: InformMessage
   }
 ]
 

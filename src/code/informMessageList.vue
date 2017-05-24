@@ -1,29 +1,16 @@
 <template>
   <div>
-    <!--主要包括成绩， 班内排名， 年级排名-->
-    <group title="成绩单">
-      <cell v-for="singleCourse in score.courseScoreList" :title="singleCourse.courseName">
-        <div>
-          分数: {{singleCourse.score}}分
-        </div>
-        <div>
-          班内排名: {{singleCourse.classRank}}名
-        </div>
-        <div>
-          年级排名: {{singleCourse.rank}}名
-        </div>
+    <group :title="'作业列表'">
+      <cell v-for="informMessage in informMessages" :key="informMessage.id" :link="{name: 'InformMessage', params: {id: informMessage.id}}" :title="informMessage.name" :inline-desc="informMessage.type">
+        <div>{{informMessage.created | dateStr}}</div>
       </cell>
     </group>
 
     <div v-transfer-dom>
       <loading v-model="show" :text="'正在加载'"></loading>
     </div>
-
   </div>
 </template>
-
-<style>
-</style>
 
 <script>
   import { Cell, Group, Loading, TransferDomDirective as TransferDom } from 'vux'
@@ -37,25 +24,23 @@
       Cell,
       Loading
     },
+    methods: {},
     data () {
       return {
-        show: false,
-        score: {},
-        eid: 0
+        informMessages: []
       }
     },
     created () {
-      this.eid = this.$route.params.id
       console.log('crated')
       this.show = true
       this.$http(
         {
           method: 'get',
-          url: '/public/wechat/score/my?eid=' + this.eid
+          url: '/public/wechat/informMessageList'
         }).then(function (response) {
           console.log(response)
           this.show = false
-          this.score = response.data.data
+          this.informMessages = response.data.data
         }, function (response) {
         })
     }

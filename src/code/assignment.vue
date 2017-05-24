@@ -3,17 +3,17 @@
     <group title="作业详情">
       <cell title="名称" :value="assignment.name"></cell>
       <cell title="科目" :value="assignment.courseName"></cell>
-      <cell title="创建时间" :value="assignment.created"></cell>
-      <cell title="截止时间" :value="assignment.submit"></cell>
+      <cell title="创建时间" :value="assignment.created | dateStr"></cell>
+      <cell title="截止时间" :value="assignment.submit | dateStr"></cell>
 
     </group>
 
     <group title="作业内容">
-      <x-textarea title="详细" v-model="assignment.content" rows="10"></x-textarea>
+      <x-textarea title="详细" v-model="assignment.content" :rows="10"></x-textarea>
     </group>
 
     <box gap="10px 10px">
-      <x-button type="primary">点击反馈作业已经做完</x-button>
+      <x-button type="primary" v-on:click.native="complete(id)" :disabled="status">{{status == true ? '作业已完成' : '点击反馈作业已完成'}}</x-button>
     </box>
 
     <div v-transfer-dom>
@@ -44,8 +44,23 @@
     data () {
       return {
         show: false,
+        status: false,
         assignment: {},
         id: 0
+      }
+    },
+    methods: {
+      complete: function (id) {
+        this.$http(
+          {
+            method: 'get',
+            url: '/public/wechat/completeAssignment?id=' + this.id
+          }).then(function (response) {
+            console.log(response)
+            this.show = false
+            this.status = true
+          }, function (response) {
+          })
       }
     },
     created () {
@@ -60,6 +75,7 @@
           console.log(response)
           this.show = false
           this.assignment = response.data.data
+          this.status = this.assignment.status
         }, function (response) {
         })
     }

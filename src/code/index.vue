@@ -95,17 +95,21 @@
         show: false,
         type: '3',
         list: [{
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+          src: '/app/img/menu/self.svg',
           title: '基本信息',
           url: '/info'
         }, {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+          src: '/app/img/menu/score.svg',
           title: '成绩查询',
           url: '/examlist'
         }, {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+          src: '/app/img/menu/assignment.svg',
           title: '作业查询',
           url: '/assignmentList'
+        }, {
+          src: '/app/img/menu/notice.svg',
+          title: '通知列表',
+          url: '/informMessageList'
         }
         ],
         index: {}
@@ -117,7 +121,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.103:8080/public/wechat/index'
+          url: '/public/wechat/index'
         }).then(function (response) {
           console.log(response)
           this.show = false
