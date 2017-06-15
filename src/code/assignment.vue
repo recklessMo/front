@@ -70,7 +70,7 @@
       this.$http(
         {
           method: 'get',
-          url: 'http://192.168.1.103:8080/public/wechat/assignment?id=' + this.id
+          url: '/public/wechat/assignment?id=' + this.id
         }).then(function (response) {
           console.log(response)
           this.show = false

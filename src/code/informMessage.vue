@@ -6,7 +6,7 @@
       <cell title="创建时间" :value="informMessage.created | dateStr"></cell>
     </group>
 
-    <group title="作业内容">
+    <group title="通知内容">
       <x-textarea title="详细" v-model="informMessage.text" :rows="10"></x-textarea>
     </group>
 
