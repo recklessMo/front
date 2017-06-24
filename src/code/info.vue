@@ -4,6 +4,7 @@
       <cell title="姓名" :value="info.name"></cell>
       <cell title="性别" :value="info.sex == 0 ? '男':'女'"></cell>
       <cell title="出生日期" :value="info.birth | dateStr"></cell>
+      <cell title="家长姓名" :value="info.parentName"></cell>
       <cell title="手机号" :value="info.phone"></cell>
       <cell title="民族" :value="info.people"></cell>
       <cell title="户口" :value="info.homeTown"></cell>
